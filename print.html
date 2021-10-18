@@ -1,0 +1,933 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Capataz Guide</title>
+                <meta name="robots" content="noindex" />
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="general/introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="golang/introduction.html"><strong aria-hidden="true">1.</strong> Golang Examples</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="golang/example_1.html"><strong aria-hidden="true">1.1.</strong> Drop-in Replacement Example</a></li><li class="chapter-item expanded "><a href="golang/example_2.html"><strong aria-hidden="true">1.2.</strong> State Management Example</a></li></ol></li><li class="chapter-item expanded "><a href="general/FAQ.html"><strong aria-hidden="true">2.</strong> FAQ</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Capataz Guide</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p><img src="general//assets/logo.png" alt="Capataz Logo" /></p>
+<blockquote>
+<p>Our greatest glory is not in never failing, but in rising every time we fail.</p>
+<p>Confucius.</p>
+</blockquote>
+<h3 id="what-are-supervision-trees"><a class="header" href="#what-are-supervision-trees">What are Supervision Trees?</a></h3>
+<p>A Supervision Tree is a design pattern where developers build applications as a
+composable group of nodes that form a tree.</p>
+<pre class="mermaid">flowchart TD
+  Root --&gt; workera[&quot;Worker A&quot;]
+  Root --&gt; subsystemb[&quot;System B&quot;]
+  subsystemb --&gt; workerb1[&quot;Worker B.1&quot;]
+  subsystemb --&gt; workerb2[&quot;Worker B.2&quot;]
+  Root --&gt; subsystemc[&quot;System C&quot;]
+  subsystemc --&gt; workerc1[&quot;Worker C.1&quot;]
+  subsystemc --&gt; workerc2[&quot;Worker C.2&quot;]
+</pre>
+<p>By designing applications this way, we accomplish a few desirable properties:</p>
+<ul>
+<li>
+<p>Every sub-tree node is responsible of supervising it's children failures,
+restarting them when needed.</p>
+</li>
+<li>
+<p>Every sub-tree node encapsulates a specific scope of the application.</p>
+</li>
+<li>
+<p>Every leaf node encapsulates some business logic that may use resources shared
+across sibling nodes.</p>
+</li>
+<li>
+<p>When we nest one sub-tree into another, we compose multiple sub-applications
+together in a way that facilitates splitting them apart when necessary (when
+doing microservices, for example.)</p>
+</li>
+</ul>
+<h3 id="why-restarts-fix-most-of-my-problems"><a class="header" href="#why-restarts-fix-most-of-my-problems">Why Restarts fix (most of) my problems?</a></h3>
+<p>You may find that one of the top 3 culprits of failing systems is invalid states
+at program runtime. It is pretty much inevitable, a system may be able to have
+infinite combinations of values in their runtime state, and some of these
+combinations are not valid or expected, making our systems crash with broken
+assumptions.</p>
+<p>A way to deal with this issue is to <a href="https://www.youtube.com/watch?v=IcgmSRJHu_8">make invalid states
+impossible</a>, but that is a costly
+endeavour, more so in dynamic typed languages or <a href="https://play.golang.org/p/KkWpwBh-8Y_D">languages that fill up empty
+values with &quot;sane defaults&quot; for the sake of
+simplicity</a>.</p>
+<p>When we develop software, we start from a state that is known to work, and our
+system would later evolve into an invalid one, crashing again. By restarting our
+components, we can guarantee that when your application encounters an error
+state, it will reset itself to a healthy state as soon as possible.</p>
+<p>Later, we can assess through error reports what went wrong and fix our code so
+that it doesn't crash unnecessarily. The main idea is to <a href="https://en.wikipedia.org/wiki/Fail-fast">let our applications
+crash fast</a> to be back in business
+again.</p>
+<p>The folks at Ericson had great success with this approach by designing
+<a href="https://erlang.org/doc/">Erlang</a> to have this feature front-and-center via
+Supervision Trees.</p>
+<h3 id="long-term-goal"><a class="header" href="#long-term-goal">Long Term Goal</a></h3>
+<p>Capataz wants to offer a supervision tree specification that can be implemented
+across multiple programming languages and provide cross-language test-suites.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="go-capataz"><a class="header" href="#go-capataz">go-Capataz</a></h1>
+<p><a href="https://github.com/capatazlib/go-capataz/workflows/Tests"><img src="https://github.com/capatazlib/go-capataz/workflows/Tests/badge.svg" alt="Github actions build status" /></a>
+<a href="https://codecov.io/gh/capatazlib/go-capataz"><img src="https://codecov.io/gh/capatazlib/go-capataz/branch/master/graph/badge.svg" alt="codecov" /></a></p>
+<p><a href="https://github.com/capatazlib/go-capataz"><code>go-Capataz</code></a> is an implementation of
+the Capataz API in Golang. To learn more about how to use this library, check
+<a href="https://pkg.go.dev/github.com/capatazlib/go-capataz@v0.2.0/cap"><code>go-Capataz</code>'s
+documentation</a>
+or follow the examples in this guide.</p>
+<blockquote>
+<p>NOTE: All examples bellow are for go-capataz v0.2.x</p>
+</blockquote>
+<ol>
+<li><a href="golang/./golang/example_1.html">Drop-in Replacement Example</a></li>
+<li><a href="golang/./golang/example_2.html">State Management Example</a></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="drop-in-replacement-example"><a class="header" href="#drop-in-replacement-example">Drop-in Replacement Example</a></h1>
+<blockquote>
+<p>A few notes:</p>
+<ul>
+<li>
+<p>This example is not managing state properly for the sake of simplicity/learning.</p>
+</li>
+<li>
+<p>Using a Supervision Tree on small applications could be overkill; ensure
+that the inherited complexity of Supervision Trees is not higher than the
+complexity of your program.</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="using-goroutines"><a class="header" href="#using-goroutines">Using goroutines</a></h2>
+<p>We could use Capataz as a drop-in replacement for regular <code>go</code> statements.</p>
+<p>Imagine we have a simple application that spawns two goroutines that form a
+<code>producer</code> ⟷ <code>consumer</code> relationship. We are going to add an arbitrary input
+error to showcase the restart capabilities of Capataz; every time the user
+writes &quot;broccoli&quot; the system is going to crash.</p>
+<pre><code class="language-go">package main
+
+import (
+    &quot;bufio&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+    &quot;sync&quot;
+)
+
+func main() {
+  buff := make(chan interface{})
+  var wg sync.WaitGroup
+
+  // Routine that gets a value from somewhere
+  wg.Add(1)
+  go func() {
+    defer wg.Done()
+    reader := bufio.NewReader(os.Stdin)
+    for {
+      text, err := reader.ReadString('\n')
+      if text == &quot;broccoli\n&quot; {
+        panic(&quot;I do not like broccoli&quot;)
+      }
+
+      if err != nil {
+        panic(err)
+      }
+
+      buff &lt;- text
+    }
+  }()
+
+  // Routine that consumes values for something else
+  wg.Add(1)
+  go func() {
+    defer wg.Done()
+    for msg := range buff {
+      fmt.Printf(&quot;received msg: %s\n&quot;, msg)
+    }
+  }()
+
+  wg.Wait()
+}
+</code></pre>
+<p>When running this software, the program crashes as soon as you say broccoli:</p>
+<pre><code>$ ./example_1
+hello
+received msg: hello
+
+world
+received msg: world
+
+broccoli
+panic: I do not like broccoli
+
+goroutine 6 [running]:
+main.main.func1(0xc000026220, 0xc000024360)
+        /home/capataz/example/main.go:22 +0x26d
+created by main.main
+        /home/capataz/example/main.go:16 +0x9c
+
+</code></pre>
+<h2 id="using-capataz"><a class="header" href="#using-capataz">Using Capataz</a></h2>
+<p>We can use a supervision tree value to get the same behavior, but on a
+supervised way:</p>
+<pre><code class="language-go">package main
+
+import (
+    &quot;bufio&quot;
+    &quot;context&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+
+    &quot;github.com/capatazlib/go-capataz/cap&quot;
+)
+
+func main() {
+    buff := make(chan interface{})
+
+    // Replace a go statement with cap.NewWorker call. Note cap.NewWorker can
+    // receive multiple configuration options, so make sure to check it's
+    // godoc documentation
+    producer := cap.NewWorker(&quot;producer&quot;, func(ctx context.Context) error {
+        // NOTE goroutines in capataz must always deal with a context
+        // to account for termination signals, and can return an error to note
+        // that they failed signaling a message to it's supervisor
+        reader := bufio.NewReader(os.Stdin)
+        for {
+            select {
+            case &lt;-ctx.Done():
+                return nil
+            default:
+                text, err := reader.ReadString('\n')
+                if text == &quot;broccoli\n&quot; {
+                    panic(&quot;I do not like broccoli&quot;)
+                }
+                if err != nil {
+                    panic(err)
+                }
+                select {
+                case &lt;-ctx.Done():
+                    return nil
+                case buff &lt;- text:
+                }
+            }
+        }
+    })
+
+    // Replace go statement with cap.NewWorker call
+    consumer := cap.NewWorker(&quot;consumer&quot;, func(ctx context.Context) error {
+        for {
+            select {
+            case &lt;-ctx.Done():
+                return nil
+            case msg := &lt;-buff:
+                fmt.Printf(&quot;received msg: %s\n&quot;, msg)
+            }
+        }
+    })
+
+    // Replace `sync.WaitGroup` with `cap.NewSupervisorSpec`, like
+    // `cap.NewWorker`, this function may receive multiple configuration
+    // options, check its godoc documentation for more details.
+    spec := cap.NewSupervisorSpec(&quot;root&quot;, cap.WithNodes(producer, consumer))
+
+    // The code above has not spawned any goroutines yet, but it wired up
+    // all the nodes the application needs to function in a static way
+
+    // The Start method triggers the spawning of all the nodes in the
+    // supervision tree in pre-order, first producer, then consumer, and
+    // finally root (our supervisor).
+    appCtx := context.Background()
+    supervisor, startErr := spec.Start(appCtx)
+    if startErr != nil {
+        panic(startErr)
+    }
+
+    // Join the current goroutine with the supervisor goroutine, in the
+    // situation there is a termination error, it will be notified here.
+    terminationErr := supervisor.Wait()
+    if terminationErr != nil {
+        fmt.Printf(&quot;terminated with errors: %v&quot;, terminationErr)
+    }
+}
+</code></pre>
+<p>In this application, we have an improved management of the lifecycle of our
+goroutines via the enforcement of a <code>context.Context</code> value, we also survive the
+dreadful broccoli:</p>
+<pre><code>$ ./example_1
+hello
+received msg: hello
+
+world
+received msg: world
+
+broccoli // &lt;--- no crash
+hello
+received msg: hello
+</code></pre>
+<h2 id="errors-shouldnt-go-to-the-void"><a class="header" href="#errors-shouldnt-go-to-the-void">Errors shouldn't go to the void</a></h2>
+<p>If you are like us, you probably hate errors getting completely ignored. We are
+able to capture errors that happen in our supervision tree using the
+EventNotifier API. Let us change the code above slightly by adding an extra
+argument to the <code>NewSupervisorSpec</code> call.</p>
+<pre><code class="language-go">func main() {
+    // ...
+    logEvent := func(ev cap.Event) {
+      fmt.Fprintf(os.Stderr, &quot;%v\n&quot;, ev)
+    }
+
+    spec := cap.NewSupervisorSpec(
+      &quot;root&quot;,
+      cap.WithNodes(producer, consumer),
+      cap.WithNotifier(logEvent),
+    )
+    // ...
+}
+</code></pre>
+<p>If we run our application again, we get a better idea of what is going on under
+the covers:</p>
+<pre><code>$ ./example_1
+Event{created:  2021-10-15 17:14:29.116512659 -0700 PDT m=+0.000185322, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer}
+Event{created:  2021-10-15 17:14:29.116846811 -0700 PDT m=+0.000519467, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/consumer}
+Event{created:  2021-10-15 17:14:29.116860487 -0700 PDT m=+0.000533142, tag:       ProcessStarted, nodeTag: Supervisor, processRuntime: root}
+hello
+received msg: hello
+
+world
+received msg: world
+
+broccoli // &lt;-- crash
+Event{created: 2021-10-15 17:14:42.265600375 -0700 PDT m=+13.149273244, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/producer, err: panic error: I do not like broccoli}
+Event{created: 2021-10-15 17:14:42.265932578 -0700 PDT m=+13.149605300, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer}
+hello again // &lt;-- back to business
+received msg: hello again
+</code></pre>
+<h2 id="what-did-we-learn"><a class="header" href="#what-did-we-learn">What did we learn</a></h2>
+<ul>
+<li>
+<p>We may use a <code>NewSupervisorSpec</code> + <code>NewWorker</code> in favor of <code>go</code> routines if we
+want to restart them on failure.</p>
+</li>
+<li>
+<p>Use the <code>cap.WithNotifier</code> to get full visibility on what is going on
+inside the supervision tree.</p>
+</li>
+<li>
+<p>Use the <code>context.Context</code> API to manage the lifecycle of worker nodes.</p>
+</li>
+</ul>
+<p><a href="golang/./example_2.html">Next</a>, we are going to initialize and manage our state inside
+the root Supervisor runtime.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="state-management-example"><a class="header" href="#state-management-example">State Management Example</a></h1>
+<blockquote>
+<p>Note: This example is a very contrived one. The goal is to show the
+capabilities of the library with easy to understand code, not one that would
+make sense.</p>
+</blockquote>
+<p>In our previous <a href="golang/./example_1.html">example</a>, we implemented a <code>producer</code> ⟷
+<code>consumer</code> program that crashed when we mentioned broccoli.</p>
+<p>The previous implementation is good enough given the channel used for
+communication between our goroutines (shared resource) is never closed. But what
+would happen if because of some complicated business logic, our channel gets
+closed (invalid state)?</p>
+<p>Let us close the channel when we receive the word &quot;cucumber&quot;</p>
+<pre><code class="language-go">package main
+
+import (
+    &quot;bufio&quot;
+    &quot;context&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+
+    &quot;github.com/capatazlib/go-capataz/cap&quot;
+)
+
+func main() {
+    buff := make(chan interface{})
+
+    producer := cap.NewWorker(&quot;producer&quot;, func(ctx context.Context) error {
+        reader := bufio.NewReader(os.Stdin)
+        for {
+            select {
+            case &lt;-ctx.Done():
+                return nil
+            default:
+                text, err := reader.ReadString('\n')
+                if text == &quot;broccoli\n&quot; {
+                    panic(&quot;I do not like broccoli&quot;)
+                }
+                // Execute &quot;feature&quot; that closes the communication channel
+                if text == &quot;cucumber\n&quot; {
+                    close(buff)
+                }
+                if err != nil {
+                    panic(err)
+                }
+                select {
+                case &lt;-ctx.Done():
+                    return nil
+                case buff &lt;- text:
+                }
+            }
+        }
+    })
+
+    consumer := cap.NewWorker(&quot;consumer&quot;, func(ctx context.Context) error {
+        for {
+            select {
+            case &lt;-ctx.Done():
+                return nil
+            case msg := &lt;-buff:
+                fmt.Printf(&quot;received msg: %s\n&quot;, msg)
+            }
+        }
+    })
+
+    logEvent := func(ev cap.Event) {
+      fmt.Fprintf(os.Stderr, &quot;%v\n&quot;, ev)
+    }
+
+    spec := cap.NewSupervisorSpec(
+      &quot;root&quot;,
+      cap.WithNodes(producer, consumer),
+      cap.WithNotifier(logEvent),
+   )
+
+    appCtx := context.Background()
+    supervisor, startErr := spec.Start(appCtx)
+    if startErr != nil {
+        panic(startErr)
+    }
+
+    terminationErr := supervisor.Wait()
+    if terminationErr != nil {
+        fmt.Printf(&quot;terminated with errors: %v&quot;, terminationErr)
+    }
+}
+</code></pre>
+<p>What do you think is going to happen? Try to guess before looking at the output
+bellow.</p>
+<p>When we run this program, we get a very interesting output:</p>
+<pre><code>$ ./example_2
+Event{created:  2021-10-18 14:01:58.377600448 -0700 PDT m=+0.000352428, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer}
+Event{created:  2021-10-18 14:01:58.378461922 -0700 PDT m=+0.001213907, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/consumer}
+Event{created:  2021-10-18 14:01:58.378506302 -0700 PDT m=+0.001258282, tag:       ProcessStarted, nodeTag: Supervisor, processRuntime: root}
+hello
+received msg: hello
+
+world
+received msg: world
+
+broccoli
+Event{created:  2021-10-18 14:02:07.077565077 -0700 PDT m=+8.700317164, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/producer, err: panic error: I do not like broccoli}
+Event{created:  2021-10-18 14:02:07.078041552 -0700 PDT m=+8.700793536, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer}
+cucumber
+received msg: %!s(&lt;nil&gt;)
+received msg: %!s(&lt;nil&gt;)
+... Message repeated infinitely
+&lt;Ctrl-C&gt;
+</code></pre>
+<p>Oh no, we implemented an infinite loop that reads a closed channel. Maybe if we
+check that the channel is closed and terminate the worker, things are going to
+work:</p>
+<pre><code class="language-go">package main
+
+import (
+  &quot;errors&quot;
+  // ...
+)
+
+func main() {
+    // ...
+
+    consumer := cap.NewWorker(&quot;consumer&quot;, func(ctx context.Context) error {
+        for {
+            select {
+            case &lt;-ctx.Done():
+                return nil
+            case msg, ok := &lt;-buff:
+                if !ok {
+                    return errors.New(&quot;consumer chan is closed&quot;)
+                }
+                fmt.Printf(&quot;received msg: %s\n&quot;, msg)
+            }
+        }
+    })
+
+    // ...
+}
+</code></pre>
+<p>If we run this program again, is the application going to recover? Let's see:</p>
+<pre><code>$ ./example_2
+Event{created:   2021-10-18 14:05:34.29107699 -0700 PDT m=+0.000542504, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer}
+Event{created:  2021-10-18 14:05:34.292069745 -0700 PDT m=+0.001535241, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/consumer}
+Event{created:  2021-10-18 14:05:34.292111319 -0700 PDT m=+0.001576815, tag:       ProcessStarted, nodeTag: Supervisor, processRuntime: root}
+hello
+received msg: hello
+
+world
+received msg: world
+
+cucumber
+Event{created:   2021-10-18 14:05:38.80534924 -0700 PDT m=+4.514814712, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/consumer, err: Consumer is not there}
+Event{created:  2021-10-18 14:05:38.805445809 -0700 PDT m=+4.514911246, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/consumer}
+Event{created:  2021-10-18 14:05:38.805459842 -0700 PDT m=+4.514925271, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/producer, err: send on closed channel}
+Event{created:  2021-10-18 14:05:38.805490588 -0700 PDT m=+4.514956018, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/consumer, err: Consumer is not there}
+Event{created:  2021-10-18 14:05:38.805519651 -0700 PDT m=+4.514985081, tag:        ProcessFailed, nodeTag: Supervisor, processRuntime: root, err: supervisor crashed due to restart tolerance surpassed}
+terminated with errors: supervisor crashed due to restart tolerance surpassed
+</code></pre>
+<p>Nope, still bad, although better because now we are failing fast. What's
+happening here? The application gets in a state that it cannot recover from
+because the channel was created <em>outside</em> the supervision tree. Whenever the
+supervisor restarts, it is keeping the old state around, which defeats the
+purpose of Supervision Trees.</p>
+<p>For this use cases where we have a <em>shared</em> state among many workers of a
+Supervisor, we use the <a href="golang/"><code>cap.BuildNodesFn</code></a> function to build all the shared
+resources and the supervised workers that are going to use them.</p>
+<pre><code class="language-go">package main
+
+import (
+    &quot;bufio&quot;
+    &quot;context&quot;
+    &quot;errors&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+
+    &quot;github.com/capatazlib/go-capataz/cap&quot;
+)
+
+func main() {
+    logEvent := func(ev cap.Event) {
+        fmt.Fprintf(os.Stderr, &quot;%v\n&quot;, ev)
+    }
+
+    spec := cap.NewSupervisorSpec(
+        &quot;root&quot;,
+        // Provide a custom cap.BuildNodesFn that:
+        //
+        // * Setups all the resources and workers in a (re)start callback.
+        //
+        // * When allocating resources, return a `cap.CleanupFn` that
+        //   closes them when the supervisor is terminated.
+        //
+        // * If there is an error allocating a resource, return the error
+        //   and _fail fast_.
+        //
+        func() (workers []cap.Node, cleanupFn func() error, resourceAcquErr error) {
+            // Create buff, producer and consumer inside the cap.BuildNodesFn
+            buff := make(chan interface{})
+
+            producer := cap.NewWorker(&quot;producer&quot;, func(ctx context.Context) error {
+              // previous implementation
+            })
+
+            consumer := cap.NewWorker(&quot;consumer&quot;, func(ctx context.Context) error {
+              // previous implementation
+            })
+
+            // There is no resource allocation, so no need to
+            // perform a cleanup
+            cleanupFn = func() (resourceCleanupErr error) {
+                return nil
+            }
+
+            return []cap.Node{producer, consumer}, cleanupFn, nil
+
+        },
+        cap.WithNotifier(logEvent),
+    )
+
+    appCtx := context.Background()
+    supervisor, startErr := spec.Start(appCtx)
+    if startErr != nil {
+        panic(startErr)
+    }
+
+    terminationErr := supervisor.Wait()
+    if terminationErr != nil {
+        fmt.Printf(&quot;terminated with errors: %v&quot;, terminationErr)
+    }
+}
+</code></pre>
+<p>What do you think, does it work now?</p>
+<pre><code>$ ./example_2
+Event{created:  2021-10-18 14:29:42.772181434 -0700 PDT m=+0.000405612, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer}
+Event{created:  2021-10-18 14:29:42.772920751 -0700 PDT m=+0.001144916, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/consumer}
+Event{created:  2021-10-18 14:29:42.772961871 -0700 PDT m=+0.001186054, tag:       ProcessStarted, nodeTag: Supervisor, processRuntime: root}
+hello
+received msg: hello
+
+cucumber
+Event{created:  2021-10-18 14:29:45.167407521 -0700 PDT m=+2.395631796, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/consumer, err: consumer chan is closed}
+Event{created:  2021-10-18 14:29:45.167749604 -0700 PDT m=+2.395973777, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/consumer}
+Event{created:  2021-10-18 14:29:45.167792201 -0700 PDT m=+2.396016366, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/producer, err: send on closed channel}
+Event{created:  2021-10-18 14:29:45.167871787 -0700 PDT m=+2.396095961, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/consumer, err: consumer chan is closed}
+Event{created:  2021-10-18 14:29:45.167935431 -0700 PDT m=+2.396159596, tag:        ProcessFailed, nodeTag: Supervisor, processRuntime: root, err: supervisor crashed due to restart tolerance surpassed}
+terminated with errors: supervisor crashed due to restart tolerance surpassed
+</code></pre>
+<p>Not quite.</p>
+<p>How come our <code>cap.BuildNodesFn</code> doesn't get called?</p>
+<p>When a Supervisor detects to many restarts from its children, it terminates all
+the running children, cleans its allocated resources and terminates with an
+error. If no other supervisor is there to catch it, the application terminates
+with that error.</p>
+<p>So, who supervises the supervisor? Another supervisor at the top of course.</p>
+<pre><code class="language-go">package main
+
+import (
+    &quot;bufio&quot;
+    &quot;context&quot;
+    &quot;errors&quot;
+    &quot;fmt&quot;
+    &quot;os&quot;
+
+    &quot;github.com/capatazlib/go-capataz/cap&quot;
+)
+
+func main() {
+    logEvent := func(ev cap.Event) {
+        fmt.Fprintf(os.Stderr, &quot;%v\n&quot;, ev)
+    }
+
+    // Make this a subSystem variable that gets used as a child node of a bigger
+    // supervision tree.
+    subSystem := cap.NewSupervisorSpec(
+        &quot;producer-consumer&quot;,
+        func() (workers []cap.Node, cleanupFn func() error, resourceAcquErr error) {
+            buff := make(chan interface{})
+
+            producer := cap.NewWorker(&quot;producer&quot;, func(ctx context.Context) error {
+              // ...
+            })
+
+            consumer := cap.NewWorker(&quot;consumer&quot;, func(ctx context.Context) error {
+              // ...
+            })
+
+            cleanupFn = func() (resourceCleanupErr error) {
+                return nil
+            }
+
+            return []cap.Node{producer, consumer}, cleanupFn, nil
+
+        },
+    )
+
+    spec := cap.NewSupervisorSpec(
+        &quot;root&quot;,
+        cap.WithNodes(
+            // Use `cap.Subtree` to insert this subSystem in our
+            // application
+            cap.Subtree(subSystem),
+        ),
+        // Keep the notifier at the top of the supervision tree
+        cap.WithNotifier(logEvent),
+    )
+
+    appCtx := context.Background()
+    supervisor, startErr := spec.Start(appCtx)
+    if startErr != nil {
+        panic(startErr)
+    }
+
+    terminationErr := supervisor.Wait()
+    if terminationErr != nil {
+        fmt.Printf(&quot;terminated with errors: %v&quot;, terminationErr)
+    }
+}
+
+
+</code></pre>
+<p>Now, let's see if we finally could make this very contrived application reliable:</p>
+<pre><code>$ ./example_2
+Event{created:  2021-10-18 14:40:02.952526855 -0700 PDT m=+0.000340334, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer-consumer/producer}
+Event{created:  2021-10-18 14:40:02.952935936 -0700 PDT m=+0.000749413, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer-consumer/consumer}
+Event{created:  2021-10-18 14:40:02.952954676 -0700 PDT m=+0.000768141, tag:       ProcessStarted, nodeTag: Supervisor, processRuntime: root/producer-consumer}
+Event{created:  2021-10-18 14:40:02.952967745 -0700 PDT m=+0.000781216, tag:       ProcessStarted, nodeTag: Supervisor, processRuntime: root}
+hello
+received msg: hello
+
+world
+received msg: world
+
+cucumber // Crash
+Event{created:  2021-10-18 14:40:10.169566747 -0700 PDT m=+7.217380249, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/producer-consumer/consumer, err: consumer chan is closed}
+Event{created:  2021-10-18 14:40:10.169711812 -0700 PDT m=+7.217525283, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer-consumer/consumer}
+Event{created:  2021-10-18 14:40:10.169732943 -0700 PDT m=+7.217546404, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/producer-consumer/producer, err: send on closed channel}
+Event{created:  2021-10-18 14:40:10.169781719 -0700 PDT m=+7.217595185, tag:        ProcessFailed, nodeTag:     Worker, processRuntime: root/producer-consumer/consumer, err: consumer chan is closed}
+Event{created:  2021-10-18 14:40:10.169816451 -0700 PDT m=+7.217629933, tag:        ProcessFailed, nodeTag: Supervisor, processRuntime: root/producer-consumer, err: supervisor crashed due to restart tolerance surpassed}
+Event{created:  2021-10-18 14:40:10.169952496 -0700 PDT m=+7.217765976, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer-consumer/producer}
+Event{created:  2021-10-18 14:40:10.170026745 -0700 PDT m=+7.217840202, tag:       ProcessStarted, nodeTag:     Worker, processRuntime: root/producer-consumer/consumer}
+Event{created:  2021-10-18 14:40:10.170038109 -0700 PDT m=+7.217851568, tag:       ProcessStarted, nodeTag: Supervisor, processRuntime: root/producer-consumer}
+hello // Back in business
+received msg: hello
+</code></pre>
+<p>Fresh like a cucumber.</p>
+<h2 id="what-did-we-learn-1"><a class="header" href="#what-did-we-learn-1">What did we learn</a></h2>
+<ul>
+<li>
+<p>Having a supervision tree without resetting state is not a very useful
+supervision tree.</p>
+</li>
+<li>
+<p>Use the <code>cap.BuildNodesFn</code> function to create tree nodes that use a shared
+resource.</p>
+</li>
+<li>
+<p>How the <code>cap.BuildNodesFn</code> allows us to return errors on start or termination.</p>
+</li>
+<li>
+<p>If we want to ensure a supervisor initialization gets called again, we need to
+supervise our supervisor from another supervisor :yawdawg:.</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="faq"><a class="header" href="#faq">FAQ</a></h1>
+<h2 id="is-capataz-production-ready"><a class="header" href="#is-capataz-production-ready">Is Capataz production ready?</a></h2>
+<p>We are currently using <a href="https://github.com/capatazlib/go-capataz">go-Capataz</a> in
+various production systems at <a href="https://digitalocean.com">DigitalOcean</a> with
+great success.</p>
+<p>There are implementations in various languages but these are not production
+ready and currently on (very slow paced) development.</p>
+<h2 id="is-capataz-an-actor-system-like-akka"><a class="header" href="#is-capataz-an-actor-system-like-akka">Is Capataz an actor system like Akka?</a></h2>
+<p>No. Capataz doesn't enforce or prescribe the Actor model as a way to accomplish
+Supervision Trees. It encourages the usage of monitored
+threads/routines/processes as a way to encapsulate business logic; however, it
+doesn't impose any communication mechanisms between these threads.</p>
+<h2 id="i-use-systemdk8s-is-capataz-still-useful-for-me"><a class="header" href="#i-use-systemdk8s-is-capataz-still-useful-for-me">I use systemd/k8s, is Capataz still useful for me?</a></h2>
+<p>It depends. You may want to avoid restarting your program when a single logical
+component in your application is failing. For example. Let's assume that your
+application contains three logical components <code>A</code>, <code>B</code>, <code>C</code>.</p>
+<pre class="mermaid">flowchart TD
+  Root --&gt; nodea[&quot;A&quot;]
+  Root --&gt; nodeb[&quot;B&quot;]
+  Root --&gt; nodec[&quot;C&quot;]
+  style nodeb stroke:#f66,stroke-width:2px
+</pre>
+<p>In this context, component <code>A</code> takes a considerate amount of time to build some
+state (cache). You probably want to avoid crashing your application (resetting
+that expensive state) when an error in component <code>B</code> occurs.</p>
+<p>With Capataz you can tune the granularity of your restart strategy, adding
+<a href="https://www.oreilly.com/library/view/release-it-2nd/9781680504552/f_0050.xhtml">bulkheads</a>
+around components <code>A</code>, <code>B</code>, and <code>C</code> via supervision trees and restarting only
+the component that is failing (<code>B</code> in this example).</p>
+<h2 id="should-i-use-supervision-trees-everywhere"><a class="header" href="#should-i-use-supervision-trees-everywhere">Should I use supervision trees everywhere?</a></h2>
+<p>It may be tempting, but no, we only recommend using Capataz in applications
+where multiple components run concurrently and could fail in unexpected ways.</p>
+<p>For example, if your application runs a single server (gRPC, HTTP), there is a
+good change the server library already offers a reliable error handling
+strategy, and adding Capataz may be overkill.</p>
+<h2 id="is-it-good-to-restart-forever"><a class="header" href="#is-it-good-to-restart-forever">Is it good to restart forever?</a></h2>
+<p>In most situations, no. You want to ensure Supervision trees have a <a href="general/">restart
+tolerance</a> that works for your application, so that it propagates failures up
+until the whole program gives up.</p>
+<p>You want to do this for a couple of reasons:</p>
+<ul>
+<li>
+<p>It triggers error notifications on your system when recovery mechanisms (like
+restarting an invalid state) are not working (fail fast).</p>
+</li>
+<li>
+<p>If logical components at the bottom of your tree are failing because some
+resource (allocated at the root of the supervisor) is in an invalid state, you
+want to make sure that restarts get propagated to the very top of the
+application.</p>
+</li>
+</ul>
+<p>By default, Capataz allows one (1) worker failure every five (5) seconds, if
+your business domain requires the tolerance of more errors, you need to tweak
+your supervision tree settings.</p>
+<p>Remember, a supervision tree and a <em>properly configured</em> supervision tree are
+two different things.</p>
+<h2 id="is-capataz-a-library-or-a-framework"><a class="header" href="#is-capataz-a-library-or-a-framework">Is Capataz a library or a framework?</a></h2>
+<p>It depends. If you use Capataz to spawn workers without relying on supervisors
+to manage the state of your application, we argue Capataz may be a drop-in
+library that replaces to your language's thread spawning mechanism.</p>
+<p>It is unlikely that you will have a group of workers that do not communicate
+between each other in a useful application, so you would rely on Capataz to
+manage your resource lifecycles. This use-case moves the needle towards Capataz
+being a framework.</p>
+<p>All of this said, we developed Capataz with the framework use-case in mind.</p>
+<h2 id="are-there-capataz-extensions"><a class="header" href="#are-there-capataz-extensions">Are there Capataz extensions?</a></h2>
+<p>Unfortunately at the current time there are no open-source libraries that
+would integrate Capataz with other observability tools like logging, Prometheus
+or any visualization tool.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+                <script type="text/javascript" src="mermaid.min.js"></script>
+                <script type="text/javascript" src="mermaid-init.js"></script>
+        
+                        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+                
+    </body>
+</html>
